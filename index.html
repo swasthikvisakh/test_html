@@ -32,24 +32,9 @@
 })();
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Swasthik Visakh S",
-  "jobTitle": "Junior Research Fellow",
-  "worksFor": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Space Science and Technology (IIST)" },
-  "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "University of Kerala" }],
-  "email": "mailto:ssvs1998@gmail.com",
-  "knowsAbout": ["High-Energy Astrophysics", "X-Ray Binaries", "Accreting Pulsars", "X-Ray Spectroscopy and Timing", "Space Physics", "Astrophotography"]
-}
-</script>
-
 <style>
 /* ==========================================================================
    Design tokens
-   Day:   cool paper, ink navy, ultramarine
-   Night: Gemini-inspired deep radial gradient, starlight, periwinkle
    ========================================================================== */
 :root{
   --serif:'Source Serif 4','Source Serif Pro','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
@@ -63,7 +48,6 @@
   --bg:#F4F6FA;
   --bg-gradient:radial-gradient(circle at 50% 0%, #E5ECF8 0%, #F4F6FA 70%);
   --bg-glass:rgba(244,246,250,.86);
-  --card-bg:rgba(255,255,255,.55);
   --ink:#0B1220;
   --muted:#566179;
   --rule:#D7DDEA;
@@ -73,13 +57,15 @@
   --blue-ink:#FFFFFF;
   --blue-soft:rgba(35,64,232,.08);
   --accent:#7C4DFF;
+  
+  --anim-ns: #2340E8;
+  --anim-comp: #FF6B6B;
   color-scheme:light;
 }
 :root[data-theme="dark"]{
   --bg:#060811;
   --bg-gradient:radial-gradient(circle at 50% 0%, #1c2038 0%, #0b0e1a 48%, #05070e 100%);
   --bg-glass:rgba(8,11,22,.82);
-  --card-bg:rgba(255,255,255,.025);
   --ink:#E6EAF5;
   --muted:#94A0B8;
   --rule:rgba(255,255,255,.09);
@@ -89,6 +75,9 @@
   --blue-ink:#060811;
   --blue-soft:rgba(138,180,248,.12);
   --accent:#C58AF9;
+
+  --anim-ns: #00F0FF;
+  --anim-comp: #FF8C42;
   color-scheme:dark;
 }
 
@@ -198,10 +187,16 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
 .btn-primary:hover{background:var(--blue-hover);border-color:var(--blue-hover)}
 
 /* ==========================================================================
-   Hero
+   Hero (Full viewport height landing page)
    ========================================================================== */
-.hero{padding-top:calc(var(--topbar-h) + clamp(40px,7vw,88px));padding-bottom:clamp(56px,8vw,108px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(32px,6vw,72px);align-items:end}
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:var(--topbar-h);
+  padding-bottom:var(--topbar-h);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:clamp(32px,6vw,72px);align-items:center}
 
 .hero-name{
   font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,8.5vw,6.2rem);
@@ -221,28 +216,32 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 
-/* Right-hand focus card in hero */
-.focus-card{
-  padding:clamp(22px,3vw,32px);
-  border:1px solid var(--rule-strong);
-  border-radius:14px;
-  background:var(--card-bg);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+/* Canvas Animation Container */
+.anim-wrapper{
+  width:100%;
+  max-width:500px;
+  aspect-ratio:1/1;
+  justify-self:center;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-.focus-label{
-  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:14px;
+#binaryCanvas {
+  width:100%;
+  height:100%;
+  display:block;
+  mix-blend-mode: screen;
 }
-.focus-title{
-  font-family:var(--serif);font-size:1.35rem;font-weight:500;line-height:1.3;margin-bottom:16px;
+:root[data-theme="light"] #binaryCanvas {
+  mix-blend-mode: multiply;
+  opacity: 0.8;
 }
-.focus-list{display:grid;gap:12px;border-top:1px solid var(--rule);padding-top:16px;font-size:.9375rem}
-.focus-list div{display:grid;grid-template-columns:6.5rem 1fr;gap:12px}
-.focus-list dt{color:var(--muted)}
-.focus-list dd{font-weight:500}
 
 @media (max-width:900px){
-  .hero-grid{grid-template-columns:1fr;align-items:start}
+  .hero{padding-top:calc(var(--topbar-h) + 40px); padding-bottom:60px; height:auto;}
+  .hero-grid{grid-template-columns:1fr;align-items:start;gap:40px;}
+  .anim-wrapper{aspect-ratio: 4/3; max-width:400px;}
 }
 
 /* ==========================================================================
@@ -263,7 +262,7 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
 .sub{margin-bottom:8px;font-size:.9375rem;font-weight:600;color:var(--muted)}
 .sub:not(:first-child){margin-top:clamp(40px,5vw,64px)}
 
-/* ---- Lists of dated entries (research, talks) ---- */
+/* ---- Lists of dated entries ---- */
 .list{border-top:1px solid var(--rule)}
 .list--open{border-top:0}
 .row{
@@ -279,7 +278,7 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
   .row-when{padding-top:0}
 }
 
-/* ---- Research lead (Current Doctoral Work) ---- */
+/* ---- Research lead ---- */
 .work-lead{padding-bottom:clamp(28px,4vw,44px);border-bottom:1px solid var(--rule)}
 .work-badge{
   display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;
@@ -437,10 +436,9 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
     --blue:#1730B8;color-scheme:light;
   }
   html{font-size:11pt}
-  .topbar,.hero-actions,.seg,.contact-tools,.toast,.skip-link,.footer-top{display:none !important}
-  .hero{padding:0 0 18pt}
+  .topbar,.hero-actions,.seg,.contact-tools,.toast,.skip-link,.footer-top, .anim-wrapper{display:none !important}
+  .hero{min-height:auto; padding:0 0 18pt}
   .hero-grid{display:block}
-  .focus-card{margin-top:14pt;border:1px solid #ccc;padding:12pt}
   .hero-name .line > span{animation:none !important}
   .block{padding-block:16pt}
   .block-title{position:static}
@@ -489,7 +487,7 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
 <main id="main" tabindex="-1">
 
   <!-- ===================================================================
-       HERO
+       HERO (Full Viewport Home Page)
        =================================================================== -->
   <section class="hero" id="top" aria-labelledby="hero-name">
     <div class="container hero-grid">
@@ -506,38 +504,19 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
         </p>
 
         <p class="hero-lede">
-          My research is in high-energy astrophysics, focusing on the broadband spectral and timing properties of accreting compact objects, neutron star X-ray binaries, and X-ray pulsars using space-based observatories. Alongside observational X-ray astronomy, I have worked on molecular cloud kinematics, exoplanet detection, astrophotography, and science outreach across Kerala.
+          My research is in high-energy astrophysics, focusing on the broadband spectral and timing properties of accreting compact objects, neutron star X-ray binaries, and X-ray pulsars using space-based observatories. I also have past experience in molecular cloud kinematics and exoplanet detection.
         </p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#research">Current research</a>
           <a class="btn" href="#contact">Contact</a>
-          <button class="btn" type="button" data-print title="Opens your browser's print dialog. Choose &quot;Save as PDF&quot;.">Save as PDF</button>
         </div>
       </div>
 
-      <aside class="focus-card" aria-label="Current research profile">
-        <p class="focus-label">Current Research Area</p>
-        <h2 class="focus-title">High-Energy Astrophysics &amp; X-Ray Binary Pulsars</h2>
-        <dl class="focus-list">
-          <div>
-            <dt>Affiliation</dt>
-            <dd>IIST, Thiruvananthapuram</dd>
-          </div>
-          <div>
-            <dt>Fellowship</dt>
-            <dd>CSIR-NET JRF (July 2024 &ndash; Present)</dd>
-          </div>
-          <div>
-            <dt>Domain</dt>
-            <dd>Accreting Neutron Stars, Be/X-Ray Binaries, X-Ray Spectroscopy &amp; Timing</dd>
-          </div>
-          <div>
-            <dt>Observatories</dt>
-            <dd>Multi-mission space-based X-ray observatories</dd>
-          </div>
-        </dl>
-      </aside>
+      <!-- X-ray Binary Animation Canvas -->
+      <div class="anim-wrapper">
+        <canvas id="binaryCanvas" width="500" height="500" aria-label="Animation of an accreting neutron star X-ray binary system"></canvas>
+      </div>
 
     </div>
   </section>
@@ -1025,7 +1004,7 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
   })();
 
   /* ------------------------------------------------------------------
-     Contact: copy email, toast, save as PDF, optional links, year
+     Contact: copy email, toast, save as PDF
      ------------------------------------------------------------------ */
   const toast = $('#toast');
   let toastTimer = 0;
@@ -1062,7 +1041,6 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
   }
 
   $$('[data-print]').forEach((b) => b.addEventListener('click', () => window.print()));
-
   $$('a[data-placeholder]').forEach((a) => {
     const href = (a.getAttribute('href') || '').trim();
     if (href === '' || href === '#') {
@@ -1073,6 +1051,151 @@ abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-st
 
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ------------------------------------------------------------------
+     Canvas Animation: Accreting Neutron Star X-Ray Binary
+     ------------------------------------------------------------------ */
+  const canvas = document.getElementById('binaryCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  // Responsive Canvas Size
+  let cw = canvas.width;
+  let ch = canvas.height;
+  
+  let particles = [];
+  let streamParticles = [];
+  
+  // Animation settings
+  const ns = { x: cw * 0.65, y: ch * 0.5, radius: 4 };
+  const comp = { x: cw * 0.15, y: ch * 0.5, radius: 40 };
+  
+  // Generate Disk Particles
+  for(let i=0; i<250; i++) {
+    particles.push({
+      angle: Math.random() * Math.PI * 2,
+      radius: 15 + Math.random() * 80,
+      speed: 0.02 + Math.random() * 0.04,
+      size: Math.random() * 2 + 0.5
+    });
+  }
+  
+  // Generate Accretion Stream Particles
+  function spawnStreamParticle() {
+    streamParticles.push({
+      x: comp.x + comp.radius - 5,
+      y: comp.y + (Math.random() * 10 - 5),
+      vx: 1 + Math.random() * 2,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2 + 1,
+      life: 1.0
+    });
+  }
+
+  function drawBinarySystem() {
+    // Determine dynamic colors from theme
+    const rootStyle = getComputedStyle(document.documentElement);
+    const nsColor = rootStyle.getPropertyValue('--anim-ns').trim();
+    const compColor = rootStyle.getPropertyValue('--anim-comp').trim();
+
+    ctx.clearRect(0, 0, cw, ch);
+    
+    // Draw Companion Star
+    let compGradient = ctx.createRadialGradient(comp.x, comp.y, comp.radius * 0.2, comp.x, comp.y, comp.radius * 1.5);
+    compGradient.addColorStop(0, compColor);
+    compGradient.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.arc(comp.x, comp.y, comp.radius * 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = compGradient;
+    ctx.fill();
+    
+    // Spawn Stream
+    if(Math.random() > 0.4) spawnStreamParticle();
+    
+    // Update and Draw Stream
+    for(let i = streamParticles.length - 1; i >= 0; i--) {
+      let p = streamParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      // Curve towards Neutron Star
+      p.vy += (ns.y - p.y) * 0.002;
+      p.vx += (ns.x - p.x) * 0.001;
+      p.life -= 0.01;
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 140, 66, ${p.life})`;
+      ctx.fill();
+      
+      if(p.life <= 0 || p.x > ns.x - 20) streamParticles.splice(i, 1);
+    }
+    
+    // Draw Accretion Disk (back half)
+    particles.forEach(p => {
+      if(Math.sin(p.angle) < 0) drawDiskParticle(p, nsColor, compColor);
+    });
+
+    // Draw Neutron Star (Compact Object)
+    ctx.beginPath();
+    ctx.arc(ns.x, ns.y, ns.radius, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = nsColor;
+    ctx.fill();
+    ctx.shadowBlur = 0; // reset
+    
+    // Draw Relativistic Jets
+    let pulse = Math.abs(Math.sin(Date.now() / 300));
+    let jetHeight = 120 + pulse * 20;
+    
+    let topJet = ctx.createLinearGradient(ns.x, ns.y, ns.x, ns.y - jetHeight);
+    topJet.addColorStop(0, nsColor);
+    topJet.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.moveTo(ns.x - 2, ns.y);
+    ctx.lineTo(ns.x + 2, ns.y);
+    ctx.lineTo(ns.x + 8, ns.y - jetHeight);
+    ctx.lineTo(ns.x - 8, ns.y - jetHeight);
+    ctx.fillStyle = topJet;
+    ctx.fill();
+    
+    let botJet = ctx.createLinearGradient(ns.x, ns.y, ns.x, ns.y + jetHeight);
+    botJet.addColorStop(0, nsColor);
+    botJet.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.moveTo(ns.x - 2, ns.y);
+    ctx.lineTo(ns.x + 2, ns.y);
+    ctx.lineTo(ns.x + 8, ns.y + jetHeight);
+    ctx.lineTo(ns.x - 8, ns.y + jetHeight);
+    ctx.fillStyle = botJet;
+    ctx.fill();
+    
+    // Draw Accretion Disk (front half)
+    particles.forEach(p => {
+      if(Math.sin(p.angle) >= 0) drawDiskParticle(p, nsColor, compColor);
+      
+      // Rotate
+      p.angle += p.speed * (80 / p.radius);
+    });
+    
+    requestAnimationFrame(drawBinarySystem);
+  }
+
+  function drawDiskParticle(p, nsColor, compColor) {
+    let px = ns.x + Math.cos(p.angle) * p.radius;
+    let py = ns.y + Math.sin(p.angle) * (p.radius * 0.3); // tilt disk
+    ctx.beginPath();
+    ctx.arc(px, py, p.size, 0, Math.PI * 2);
+    // Gradient mix based on radius
+    ctx.fillStyle = (p.radius < 40) ? nsColor : compColor; 
+    ctx.globalAlpha = 0.6 + Math.random() * 0.4;
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
+  }
+  
+  // Only run animation if reduced motion is not checked
+  if(!reduceMotion.matches) {
+    drawBinarySystem();
+  }
 })();
 </script>
 </body>
