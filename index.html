@@ -1,301 +1,1310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swasthik Visakh S | Portfolio</title>
-    <style>
-        /* Base and Background Styling (Gemini Dark Mode Theme) */
-        :root {
-            --bg-color: #000000;
-            --gradient-center: #1a1c29;
-            --text-main: #e8eaed;
-            --text-muted: #9aa0a6;
-            --accent-blue: #8ab4f8;
-            --accent-purple: #c58af9;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Swasthik Visakh S | Junior Research Fellow, IIST</title>
+<meta name="description" content="Swasthik Visakh S is a Junior Research Fellow at the Indian Institute of Space Science and Technology (IIST). Research on Galactic gas kinematics, X-ray data from XPoSat and exoplanet detection.">
+<meta name="author" content="Swasthik Visakh S">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F6FA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Swasthik Visakh S | Junior Research Fellow, IIST">
+<meta property="og:description" content="Research on Galactic gas kinematics, X-ray data from XPoSat and exoplanet detection.">
+<meta name="twitter:card" content="summary">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% 0%, var(--gradient-center) 0%, var(--bg-color) 70%);
-            background-attachment: fixed;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+<!-- Favicon: a cloud split into blue-shifted and red-shifted halves -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060913'/%3E%3Cpath d='M32 12a20 20 0 0 0 0 40z' fill='%232e68ff'/%3E%3Cpath d='M32 12a20 20 0 0 1 0 40z' fill='%23ff4e38'/%3E%3C/svg%3E">
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,300..700&display=swap" rel="stylesheet">
 
-        /* Typography & Gradients */
-        h1, h2, h3 {
-            margin-top: 0;
-        }
+<!-- Set the theme before first paint so the page never flashes the wrong colours -->
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') {
+    t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
 
-        .hero-name {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Swasthik Visakh S",
+  "jobTitle": "Junior Research Fellow",
+  "worksFor": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Space Science and Technology (IIST)" },
+  "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "University of Kerala" }],
+  "email": "mailto:ssvs1998@gmail.com",
+  "knowsAbout": ["Astrophysics", "Space physics", "Galactic gas kinematics", "X-ray astronomy", "Exoplanet detection", "Astrophotography"]
+}
+</script>
 
-        .hero-title {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
+<style>
+/* ==========================================================================
+   Design tokens
+   Day:   cool paper, ink navy, ultramarine
+   Night: deep field, starlight, periwinkle
+   Blue and red come from the velocity colour scale in the hero figure:
+   blue = moving toward us, red = moving away.
+   ========================================================================== */
+:root{
+  --serif:'Source Serif 4','Source Serif Pro','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
 
-        h2 {
-            font-size: 1.8rem;
-            color: var(--text-main);
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
+  --gutter:clamp(20px,5vw,48px);
+  --topbar-h:64px;
+  --ease:cubic-bezier(.2,.75,.1,1);
 
-        h3 {
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-            margin-bottom: 5px;
-        }
+  --bg:#F4F6FA;
+  --bg-glass:rgba(244,246,250,.86);
+  --ink:#0B1220;
+  --muted:#566179;
+  --rule:#D7DDEA;
+  --rule-strong:#B3BDD2;
+  --tick:#8791AB;
+  --blue:#2340E8;
+  --blue-hover:#1730B8;
+  --blue-ink:#FFFFFF;
+  --blue-soft:rgba(35,64,232,.08);
+  --red:#D23B26;
+  --plate:#060913;
+  --plate-line:rgba(120,135,180,.28);
+  --shadow:0 30px 60px -34px rgba(11,18,32,.55);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#080C18;
+  --bg-glass:rgba(8,12,24,.84);
+  --ink:#E6EAF5;
+  --muted:#8F9AB6;
+  --rule:#1B2440;
+  --rule-strong:#2C3862;
+  --tick:#5B678C;
+  --blue:#8BA4FF;
+  --blue-hover:#B3C3FF;
+  --blue-ink:#080C18;
+  --blue-soft:rgba(139,164,255,.12);
+  --red:#FF7A5E;
+  --plate:#04060D;
+  --plate-line:rgba(140,155,205,.32);
+  --shadow:0 30px 70px -34px rgba(0,0,0,.9);
+  color-scheme:dark;
+}
 
-        /* Glassmorphism Cards */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+canvas,svg{display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+[hidden]{display:none !important}
+main:focus{outline:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+abbr[title]{text-decoration:underline dotted;text-decoration-color:var(--rule-strong);text-underline-offset:.22em;cursor:help}
+.nowrap{white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.container{width:min(1180px,100% - 2 * var(--gutter));margin-inline:auto}
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(197, 138, 249, 0.4);
-        }
+.skip-link{
+  position:absolute;left:12px;top:-64px;z-index:100;padding:10px 14px;border-radius:8px;
+  background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none;transition:top .15s;
+}
+.skip-link:focus{top:12px}
 
-        /* Links and Lists */
-        a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+/* Smooth colour change when the theme is switched (class is added briefly by JS) */
+.theme-fade,.theme-fade *,.theme-fade *::before,.theme-fade *::after{
+  transition:background-color .35s ease,color .35s ease,border-color .35s ease !important;
+}
 
-        a:hover {
-            color: var(--accent-purple);
-        }
+/* ==========================================================================
+   Top bar
+   ========================================================================== */
+.topbar{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  background:var(--bg-glass);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+  border-bottom:1px solid var(--rule);
+}
+.topbar-inner{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-family:var(--serif);font-size:1.2rem;font-weight:600;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
+.site-nav ul{display:flex;gap:clamp(14px,2vw,28px)}
+.site-nav a{
+  position:relative;display:block;padding:8px 2px;
+  font-size:.9375rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.site-nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--blue);
+  transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease);
+}
+.site-nav a:hover,.site-nav a[aria-current="true"]{color:var(--ink)}
+.site-nav a:hover::after,.site-nav a[aria-current="true"]::after{transform:scaleX(1)}
+.topbar-tools{display:flex;gap:8px}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.progress span{display:block;height:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
+.icon-btn{
+  display:grid;place-items:center;width:40px;height:40px;padding:0;
+  border:1px solid var(--rule);border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;
+  transition:border-color .2s,background-color .2s;
+}
+.icon-btn:hover{border-color:var(--rule-strong);background:var(--blue-soft)}
+.icon-btn svg{width:20px;height:20px}
+.theme-toggle .sun{display:none}
+:root[data-theme="dark"] .theme-toggle .sun{display:block}
+:root[data-theme="dark"] .theme-toggle .moon{display:none}
+.menu-toggle{display:none}
+.menu-toggle .i-close{display:none}
+.topbar.menu-open .menu-toggle .i-close{display:block}
+.topbar.menu-open .menu-toggle .i-open{display:none}
 
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
+@media (max-width:960px){
+  .menu-toggle{display:grid}
+  .site-nav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    padding:6px var(--gutter) 22px;background:var(--bg);border-bottom:1px solid var(--rule);
+  }
+  .topbar.menu-open .site-nav{display:block}
+  .site-nav ul{flex-direction:column;gap:0}
+  .site-nav a{padding:14px 0;border-bottom:1px solid var(--rule);font-family:var(--serif);font-size:1.35rem;color:var(--ink)}
+  .site-nav a::after{display:none}
+  .site-nav a[aria-current="true"]{color:var(--blue)}
+}
 
-        ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 10px;
-            color: var(--text-muted);
-        }
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;
+  border:1px solid var(--rule-strong);border-radius:10px;background:transparent;
+  font-size:.9375rem;font-weight:600;text-decoration:none;cursor:pointer;
+  transition:background-color .2s,border-color .2s,transform .1s;
+}
+.btn:hover{border-color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:var(--blue-ink)}
+.btn-primary:hover{background:var(--blue-hover);border-color:var(--blue-hover)}
 
-        ul li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--accent-purple);
-            font-size: 0.9em;
-        }
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{padding-top:calc(var(--topbar-h) + clamp(40px,7vw,88px));padding-bottom:clamp(56px,8vw,112px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(32px,6vw,88px);align-items:center}
 
-        .date-location {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-bottom: 10px;
-            display: block;
-        }
+.hero-name{
+  font-family:var(--serif);font-weight:400;font-size:clamp(3.5rem,9vw,6.4rem);
+  line-height:.98;letter-spacing:-.028em;
+}
+.hero-name .line{display:block;overflow:hidden;padding-block:.06em;margin-block:-.06em}
+.hero-name .line > span{display:block;animation:line-up .95s var(--ease) both}
+.hero-name .line:nth-child(2) > span{animation-delay:.09s}
+@keyframes line-up{from{transform:translateY(108%)}}
 
-        /* Skills Badges */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.hero-role{margin-top:clamp(20px,3vw,32px)}
+.hero-role strong{display:block;font-size:1.25rem;font-weight:600;letter-spacing:-.005em}
+.hero-role span{display:block;margin-top:2px;color:var(--muted)}
+.hero-lede{
+  margin-top:22px;max-width:52ch;
+  font-family:var(--serif);font-size:clamp(1.08rem,1.5vw,1.25rem);line-height:1.65;text-wrap:pretty;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 
-        .skill-badge {
-            background: rgba(138, 180, 248, 0.1);
-            color: var(--accent-blue);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(138, 180, 248, 0.2);
-        }
+/* ---- Figure: simulated velocity map ---- */
+.plate{width:100%;max-width:560px;justify-self:end;animation:plate-in 1.1s .35s var(--ease) both}
+@keyframes plate-in{from{opacity:0;transform:translateY(14px)}}
+.plate-grid{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:8px}
+.plate-frame{
+  grid-column:2;grid-row:1;position:relative;aspect-ratio:1;overflow:hidden;
+  background:var(--plate);border:1px solid var(--plate-line);border-radius:6px;box-shadow:var(--shadow);
+  cursor:crosshair;touch-action:pan-y;
+}
+.plate-frame canvas{width:100%;height:100%}
+.plate-noscript{position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#9AA5C2;font-size:.875rem;text-align:center}
+.crosshair{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .15s}
+.plate-frame.is-active .crosshair{opacity:1}
+.crosshair i{position:absolute;background:rgba(255,255,255,.4)}
+.ch-v{top:0;bottom:0;width:1px;left:var(--cx,50%)}
+.ch-h{left:0;right:0;height:1px;top:var(--cy,50%)}
+.readout{
+  position:absolute;left:10px;top:10px;padding:5px 8px;border-radius:4px;
+  background:rgba(6,9,19,.78);border:1px solid var(--plate-line);color:#E7EBF6;
+  font:500 .6875rem/1.2 var(--mono);font-variant-numeric:tabular-nums;white-space:pre;pointer-events:none;
+}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .hero-name {
-                font-size: 2.5rem;
-            }
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+.axis{position:relative;color:var(--muted);font-size:.6875rem;line-height:1;font-variant-numeric:tabular-nums}
+.axis span{position:absolute}
+.axis-x{grid-column:2;grid-row:2;height:28px;margin-top:6px}
+.axis-x::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:8px;border-right:1px solid var(--tick);
+  background:
+    linear-gradient(to right,var(--tick) 1px,transparent 1px) 0 0/25% 100% repeat-x,
+    linear-gradient(to right,var(--tick) 1px,transparent 1px) 0 0/5% 50% repeat-x;
+}
+.axis-x span{top:13px}
+.axis-x span:nth-child(1){left:0}
+.axis-x span:nth-child(2){left:50%;transform:translateX(-50%)}
+.axis-x span:nth-child(3){right:0}
+.axis-y{grid-column:1;grid-row:1}
+.axis-y::before{
+  content:"";position:absolute;top:0;bottom:0;right:0;width:8px;border-bottom:1px solid var(--tick);
+  background:
+    linear-gradient(to bottom,var(--tick) 1px,transparent 1px) 0 0/100% 25% repeat-y,
+    linear-gradient(to bottom,var(--tick) 1px,transparent 1px) 100% 0/50% 5% repeat-y;
+}
+.axis-y span{right:13px}
+.axis-y span:nth-child(1){top:0}
+.axis-y span:nth-child(2){top:50%;transform:translateY(-50%)}
+.axis-y span:nth-child(3){bottom:0}
+
+.plate-legend{display:flex;align-items:center;gap:10px;margin:14px 0 0 42px;font-size:.75rem;color:var(--muted)}
+.plate-legend .bar{flex:0 0 120px;height:8px;border-radius:4px;background:linear-gradient(to right,#2E68FF,#ECF0F8 50%,#FF4E38)}
+.tilt{display:flex;align-items:center;gap:12px;margin:14px 0 0 42px;font-size:.875rem;font-weight:600}
+.tilt input{flex:1;max-width:240px;accent-color:var(--blue)}
+.tilt output{min-width:3ch;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.plate-caption{margin:12px 0 0 42px;max-width:58ch;font-size:.875rem;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.plate-caption strong{color:var(--ink);font-weight:600}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .plate{justify-self:center}
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+.block{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--rule);scroll-margin-top:var(--topbar-h)}
+.block-grid{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:clamp(24px,5vw,72px)}
+.block-title{
+  position:sticky;top:calc(var(--topbar-h) + 28px);align-self:start;
+  font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3vw,2.5rem);line-height:1.1;letter-spacing:-.018em;
+}
+.block-body{min-width:0;max-width:860px;overflow-wrap:break-word}
+@media (max-width:860px){
+  .block-grid{grid-template-columns:1fr}
+  .block-title{position:static}
+}
+
+.sub{margin-bottom:8px;font-size:.9375rem;font-weight:600;color:var(--muted)}
+.sub:not(:first-child){margin-top:clamp(40px,5vw,64px)}
+
+/* ---- Lists of dated entries (research, talks) ---- */
+.list{border-top:1px solid var(--rule)}
+.list--open{border-top:0}
+.row{
+  display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:6px 28px;
+  padding-block:clamp(20px,2.5vw,28px);border-bottom:1px solid var(--rule);
+}
+.row-when{padding-top:.25em;font-size:.9375rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.row h3,.row h4{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.3;letter-spacing:-.005em;text-wrap:balance}
+.row-org{margin-top:3px;font-size:.9375rem;color:var(--muted)}
+.row-desc{margin-top:8px;max-width:62ch;font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr}
+  .row-when{padding-top:0}
+}
+
+/* ---- Research lead ---- */
+.work-lead{padding-bottom:clamp(28px,4vw,44px);border-bottom:1px solid var(--rule)}
+.work-lead h3{
+  max-width:30ch;font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.6rem,2.7vw,2.2rem);line-height:1.2;letter-spacing:-.014em;text-wrap:balance;
+}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;margin-top:26px;font-size:.9375rem}
+.facts dt{color:var(--muted)}
+.status i{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--red);vertical-align:.04em}
+
+/* ---- Education timeline ---- */
+.timeline{position:relative;padding-left:34px}
+.tl-item{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15rem);gap:14px 40px;
+  padding-block:26px;border-bottom:1px solid var(--rule);
+}
+.tl-item:last-child{border-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-34px;top:34px;width:13px;height:13px;
+  border:2px solid var(--blue);border-radius:50%;background:var(--bg);
+}
+.tl-item:not(:last-child)::after{
+  content:"";position:absolute;left:-28px;top:47px;bottom:-34px;width:1px;background:var(--rule-strong);
+}
+.tl-when{font-size:.9375rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl-item h3{margin-top:4px;font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.3;letter-spacing:-.005em;text-wrap:balance}
+.tl-org{margin-top:3px;font-size:.9375rem;color:var(--muted)}
+.tl-grade{align-self:center}
+.grade-line{display:flex;align-items:baseline;gap:10px}
+.grade-pct{font-family:var(--serif);font-size:1.9rem;line-height:1;letter-spacing:-.02em;font-variant-numeric:lining-nums}
+.grade-letter{font-size:.9375rem;font-weight:600;color:var(--muted)}
+.grade-axis{position:relative;height:4px;margin-top:16px;border-radius:2px;background:var(--rule)}
+.grade-axis::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--v) * 1%);border-radius:2px;background:var(--blue)}
+.grade-axis::after{
+  content:"";position:absolute;top:50%;left:calc(var(--v) * 1%);width:12px;height:12px;margin:-6px 0 0 -6px;
+  border:2px solid var(--blue);border-radius:50%;background:var(--bg);
+}
+.grade-scale{display:flex;justify-content:space-between;margin-top:9px;font-size:.6875rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  .tl-item{grid-template-columns:1fr}
+}
+
+/* ---- Skills ---- */
+.skills > div{
+  display:grid;grid-template-columns:11rem minmax(0,1fr);gap:6px 28px;
+  padding-block:22px;border-bottom:1px solid var(--rule);
+}
+.skills > div:first-child{border-top:1px solid var(--rule)}
+.skills dt{padding-top:.4em;font-size:.9375rem;color:var(--muted)}
+.inline-list li{display:inline;font-family:var(--serif);font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.7}
+.inline-list li:not(:last-child)::after{content:"/";content:"/" / "";margin-inline:.5em .25em;color:var(--rule-strong)}
+@media (max-width:640px){
+  .skills > div{grid-template-columns:1fr}
+  .skills dt{padding-top:0}
+}
+
+/* ---- Awards ---- */
+.award{
+  display:grid;grid-template-columns:11rem minmax(0,1fr);gap:6px 28px;
+  padding-block:22px;border-bottom:1px solid var(--rule);
+}
+.award-fig{font-family:var(--serif);font-size:1.6rem;line-height:1.2;letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.award h4{font-family:var(--serif);font-weight:500;font-size:1.2rem;line-height:1.35;padding-top:.15em}
+.award p{margin-top:4px;color:var(--muted);font-size:.9375rem}
+@media (max-width:640px){
+  .award{grid-template-columns:1fr}
+}
+
+/* ---- Courses and workshops ---- */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;margin-bottom:22px;border:1px solid var(--rule);border-radius:12px}
+.seg button{
+  padding:8px 14px;border:0;border-radius:8px;background:transparent;
+  font-size:.875rem;font-weight:600;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s;
+}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg .count{margin-left:6px;font-weight:500;opacity:.7;font-variant-numeric:tabular-nums}
+@media (max-width:440px){
+  .seg{gap:2px;padding:3px}
+  .seg button{padding:8px 10px;font-size:.8125rem}
+  .seg .count{margin-left:4px}
+}
+.learn-list{border-top:1px solid var(--rule)}
+.learn-item{
+  display:grid;grid-template-columns:7.5rem minmax(0,1fr) 6rem;gap:4px 24px;align-items:baseline;
+  padding-block:18px;border-bottom:1px solid var(--rule);
+}
+.learn-item.pop{animation:fade-in .35s var(--ease) both}
+@keyframes fade-in{from{opacity:0;transform:translateY(6px)}}
+.learn-when{font-size:.9375rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.learn-item h3{font-family:var(--serif);font-weight:500;font-size:1.125rem;line-height:1.35;text-wrap:balance}
+.learn-org{margin-top:2px;font-size:.9375rem;color:var(--muted)}
+.learn-type{justify-self:end;font-size:.8125rem;color:var(--muted)}
+@media (max-width:640px){
+  .learn-item{grid-template-columns:1fr}
+  .learn-type{justify-self:start}
+}
+
+/* ---- Outreach ---- */
+.org-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(24px,3vw,40px)}
+.org{padding-top:16px;border-top:2px solid var(--ink)}
+.org h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;line-height:1.25;letter-spacing:-.008em}
+.org-role{margin-top:4px;font-size:.9375rem;font-weight:600}
+.org p:last-child{margin-top:8px;color:var(--muted);font-size:.9375rem}
+
+/* ---- Contact ---- */
+.contact-lead{max-width:24ch;font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.2;letter-spacing:-.014em;text-wrap:balance}
+.contact-email{
+  display:inline-block;margin-top:28px;overflow-wrap:anywhere;
+  font-family:var(--serif);font-size:clamp(1.3rem,3.2vw,2.1rem);letter-spacing:-.01em;
+  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.22em;text-decoration-color:var(--blue);
+  transition:color .2s;
+}
+.contact-email:hover{color:var(--blue)}
+.contact-tools{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.contact-list{margin-top:44px;border-top:1px solid var(--rule)}
+.contact-row{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:4px 24px;padding-block:14px;border-bottom:1px solid var(--rule)}
+.contact-row dt{color:var(--muted);font-size:.9375rem}
+.contact-row a{text-underline-offset:.2em}
+.contact-row a:hover{color:var(--blue)}
+
+/* ---- Footer + toast ---- */
+.site-footer{padding-block:28px;border-top:1px solid var(--rule)}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 16px;font-size:.875rem;color:var(--muted)}
+.footer-inner a{text-decoration:none}
+.footer-inner a:hover{color:var(--ink);text-decoration:underline}
+.toast{
+  position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));z-index:80;
+  padding:10px 16px;border-radius:10px;background:var(--ink);color:var(--bg);
+  font-size:.9rem;font-weight:500;opacity:0;pointer-events:none;
+  transform:translate(-50%,16px);transition:opacity .2s,transform .2s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-name .line > span,.plate,.learn-item.pop{animation:none}
+  *{transition-duration:.01ms !important}
+}
+
+/* ==========================================================================
+   Print: "Save as PDF" produces a clean, light, single-flow résumé
+   ========================================================================== */
+@media print{
+  :root,:root[data-theme="dark"]{
+    --bg:#fff;--bg-glass:#fff;--ink:#111;--muted:#444;--rule:#ccc;--rule-strong:#999;
+    --blue:#1730B8;--red:#B02A18;color-scheme:light;
+  }
+  html{font-size:11pt}
+  .topbar,.plate,.hero-actions,.seg,.contact-tools,.toast,.skip-link,.footer-top{display:none !important}
+  .hero{padding:0 0 18pt}
+  .hero-grid{display:block}
+  .hero-name .line > span{animation:none !important}
+  .block{padding-block:16pt}
+  .block-title{position:static}
+  .row,.tl-item,.learn-item,.org,.award,.skills > div{break-inside:avoid}
+  .learn-item[hidden]{display:grid !important}
+  .learn-item.pop{animation:none !important}
+  .grade-axis,.grade-scale,.status i{display:none}
+  a{text-decoration:none}
+}
+</style>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="container">
-    <!-- Header Section -->
-    <header>
-        <h1 class="hero-name">Swasthik Visakh S</h1>
-        <div class="hero-title">Junior Research Fellow @ Indian Institute of Space Science and Technology (IIST)</div>
-        
-        <div class="contact-info">
-            <span>📧 <a href="mailto:ssvs1998@gmail.com">ssvs1998@gmail.com</a></span>
-            <span>📱 +91 9645460071</span>
-            <span>🔗 <a href="#" target="_blank">LinkedIn Profile</a></span> <!-- Replace # with actual link -->
-        </div>
-    </header>
+<header class="topbar" id="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top">Swasthik Visakh S</a>
 
-    <!-- Research Projects -->
-    <section>
-        <h2>Research Experience</h2>
-        <div class="card">
-            <h3>MSc Thesis: Galactic Cloud Kinematics</h3>
-            <span class="date-location">March 2022 – Present | Supervised by Dr. Veena V. S. (MPIfR, Germany)</span>
-            <p>Understanding The Gas Kinematics and Hierarchical Structure of The Galactic Cloud G316.80-0.05. <em>(Manuscript under submission)</em></p>
-        </div>
-        <div class="card">
-            <h3>Short-Term Research Projects</h3>
-            <ul>
-                <li><strong>XSPECT/XPoSat Data Analysis:</strong> Spectro-Temporal Study of Scorpious X-1 using XSPECT/XPoSat. (URSC, Bangalore - 2025)</li>
-                <li><strong>Exoplanet Detection:</strong> Radial velocity method study guided by Dr. Anand Narayanan at IIST, Thiruvananthapuram. (2022)</li>
-                <li><strong>BSc Project:</strong> Estimation of the Range of Stromgren Sphere of Different Spectral Stars. (University of Kerala - 2020)</li>
-            </ul>
-        </div>
-    </section>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#recognition">Recognition</a></li>
+        <li><a href="#learning">Learning</a></li>
+        <li><a href="#outreach">Outreach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- Education -->
-    <section>
-        <h2>Education</h2>
-        <div class="card">
-            <h3>MSc Physics (Specialization in Space Physics)</h3>
-            <span class="date-location">Dec 2021 – Sep 2022 | Department of Physics, University of Kerala</span>
-            <p>Grade: <strong>88.2% (A+)</strong></p>
-        </div>
-        <div class="card">
-            <h3>BSc Physics</h3>
-            <span class="date-location">Aug 2017 – Mar 2020 | SN College Chempazhanthy, University of Kerala</span>
-            <p>Grade: <strong>82.25% (A)</strong></p>
-        </div>
-        <div class="card">
-            <h3>Higher Secondary</h3>
-            <span class="date-location">2015 – 2017 | St. Mary's HSS Pattom</span>
-            <p>Grade: <strong>94.25%</strong></p>
-        </div>
-    </section>
+    <div class="topbar-tools">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Switch to night theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+</header>
 
-    <!-- Skills & Languages -->
-    <section>
-        <h2>Skills & Expertise</h2>
-        <div class="card">
-            <div class="skills-container">
-                <div class="skill-badge">Python</div>
-                <div class="skill-badge">C++</div>
-                <div class="skill-badge">C</div>
-                <div class="skill-badge">HTML</div>
-                <div class="skill-badge">MATLAB</div>
-                <div class="skill-badge">SQL</div>
-                <div class="skill-badge">Astrophotography</div>
-                <div class="skill-badge">Image & Video Editing</div>
+<main id="main" tabindex="-1">
+
+  <!-- ===================================================================
+       HERO
+       =================================================================== -->
+  <section class="hero" id="top" aria-labelledby="hero-name">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <h1 class="hero-name" id="hero-name">
+          <span class="line"><span>Swasthik</span></span>
+          <span class="line"><span>Visakh S</span></span>
+        </h1>
+
+        <p class="hero-role">
+          <strong>Junior Research Fellow</strong>
+          <span>Indian Institute of Space Science and Technology (IIST)</span>
+        </p>
+
+        <!-- EDIT: this introduction is written from the facts in your CV; adjust the wording freely -->
+        <p class="hero-lede">
+          I study how gas moves and clumps inside our Galaxy. My thesis follows the kinematics and hierarchical structure of the Galactic cloud <span class="nowrap">G316.80-0.05</span>, and my other projects cover X-ray data from XPoSat and exoplanet detection. I also photograph the night sky and take part in public astronomy outreach in Kerala.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#research">View research</a>
+          <a class="btn" href="#contact">Contact</a>
+          <button class="btn" type="button" data-print title="Opens your browser's print dialog. Choose &quot;Save as PDF&quot;.">Save as PDF</button>
+        </div>
+      </div>
+
+      <figure class="plate">
+        <div class="plate-grid">
+          <div class="axis axis-y" aria-hidden="true"><span>+1</span><span>0</span><span>&minus;1</span></div>
+
+          <div class="plate-frame" id="plate-frame">
+            <canvas id="vmap" width="256" height="256" role="img" aria-label="Simulated gas cloud coloured by line-of-sight velocity: blue on the left where gas moves toward us, red on the right where it moves away."></canvas>
+            <noscript><p class="plate-noscript">Turn on JavaScript to see the interactive figure.</p></noscript>
+            <div class="crosshair" aria-hidden="true"><i class="ch-v"></i><i class="ch-h"></i></div>
+            <div class="readout" id="readout" aria-hidden="true">Hover to probe</div>
+          </div>
+
+          <div class="axis axis-x" aria-hidden="true"><span>&minus;1</span><span>0</span><span>+1</span></div>
+        </div>
+
+        <div class="plate-legend" aria-hidden="true">
+          <span>Approaching</span><span class="bar"></span><span>Receding</span>
+        </div>
+
+        <div class="tilt">
+          <label for="tilt">Tilt</label>
+          <input id="tilt" type="range" min="10" max="80" step="1" value="58">
+          <output id="tilt-out" for="tilt">58&deg;</output>
+        </div>
+
+        <figcaption class="plate-caption">
+          <strong>Fig. 1</strong> A simulated gas cloud coloured by line-of-sight velocity. Smaller clumps sit inside larger ones, a toy picture of hierarchical structure. Hover to read position (in cloud radii) and velocity (in units of the circular speed). Illustration only, not observational data.
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       RESEARCH
+       =================================================================== -->
+  <section class="block" id="research" aria-labelledby="t-research">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-research">Research</h2>
+
+      <div class="block-body">
+        <article class="work-lead">
+          <h3>Understanding the gas kinematics and hierarchical structure of the Galactic cloud <span class="nowrap">G316.80-0.05</span></h3>
+          <dl class="facts">
+            <dt>Project</dt><dd>MSc thesis</dd>
+            <dt>Period</dt><dd>March 2022 &ndash; Present</dd>
+            <dt>Supervisor</dt><dd>Dr. Veena V. S., <abbr title="Max Planck Institute for Radio Astronomy">MPIfR</abbr>, Germany</dd>
+            <dt>Status</dt><dd><span class="status"><i aria-hidden="true"></i>Manuscript under submission</span></dd>
+          </dl>
+        </article>
+
+        <ol class="list list--open">
+          <li class="row">
+            <span class="row-when">2025</span>
+            <div>
+              <h3>Spectro-temporal study of Scorpius X-1 using XSPECT/XPoSat</h3>
+              <p class="row-org">Short-term research project at <abbr title="U R Rao Satellite Centre">URSC</abbr>, Bangalore</p>
             </div>
-            <br>
-            <h3>Languages</h3>
-            <div class="skills-container">
-                <div class="skill-badge">English</div>
-                <div class="skill-badge">Malayalam</div>
-                <div class="skill-badge">Hindi</div>
+          </li>
+          <li class="row">
+            <span class="row-when">2022</span>
+            <div>
+              <h3>Exoplanet detection</h3>
+              <p class="row-org">Short-term research project at IIST, Thiruvananthapuram</p>
+              <p class="row-desc">A study of the radial velocity method, guided by Dr. Anand Narayanan.</p>
             </div>
+          </li>
+          <li class="row">
+            <span class="row-when">2020</span>
+            <div>
+              <h3>Estimation of the range of the Str&ouml;mgren sphere of different spectral stars</h3>
+              <p class="row-org">BSc project, University of Kerala</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       EDUCATION
+       =================================================================== -->
+  <section class="block" id="education" aria-labelledby="t-education">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-education">Education</h2>
+
+      <div class="block-body">
+        <ol class="timeline">
+          <li class="tl-item">
+            <div>
+              <p class="tl-when">Dec 2021 &ndash; Sep 2022</p>
+              <h3>MSc Physics, specialization in Space Physics</h3>
+              <p class="tl-org">Department of Physics, University of Kerala</p>
+            </div>
+            <div class="tl-grade">
+              <p class="grade-line"><span class="grade-pct">88.2%</span><span class="grade-letter">Grade A+</span></p>
+              <div class="grade-axis" style="--v:88.2" role="img" aria-label="88.2 on a scale of 0 to 100"></div>
+              <div class="grade-scale" aria-hidden="true"><span>0</span><span>100</span></div>
+            </div>
+          </li>
+          <li class="tl-item">
+            <div>
+              <p class="tl-when">Aug 2017 &ndash; Mar 2020</p>
+              <h3>BSc Physics</h3>
+              <p class="tl-org">SN College Chempazhanthy, University of Kerala</p>
+            </div>
+            <div class="tl-grade">
+              <p class="grade-line"><span class="grade-pct">82.25%</span><span class="grade-letter">Grade A</span></p>
+              <div class="grade-axis" style="--v:82.25" role="img" aria-label="82.25 on a scale of 0 to 100"></div>
+              <div class="grade-scale" aria-hidden="true"><span>0</span><span>100</span></div>
+            </div>
+          </li>
+          <li class="tl-item">
+            <div>
+              <p class="tl-when">2015 &ndash; 2017</p>
+              <h3>Higher Secondary</h3>
+              <p class="tl-org">St. Mary's HSS Pattom</p>
+            </div>
+            <div class="tl-grade">
+              <p class="grade-line"><span class="grade-pct">94.25%</span></p>
+              <div class="grade-axis" style="--v:94.25" role="img" aria-label="94.25 on a scale of 0 to 100"></div>
+              <div class="grade-scale" aria-hidden="true"><span>0</span><span>100</span></div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SKILLS
+       =================================================================== -->
+  <section class="block" id="skills" aria-labelledby="t-skills">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-skills">Skills</h2>
+
+      <div class="block-body">
+        <dl class="skills">
+          <div>
+            <dt>Computing</dt>
+            <dd><ul class="inline-list"><li>Python</li>
+              <li>C++</li>
+              <li>C</li>
+              <li>MATLAB</li>
+              <li>SQL</li>
+              <li>HTML</li></ul></dd>
+          </div>
+          <div>
+            <dt>Imaging</dt>
+            <dd><ul class="inline-list"><li>Astrophotography</li>
+              <li>Image &amp; Video Editing</li></ul></dd>
+          </div>
+          <div>
+            <dt>Languages</dt>
+            <dd><ul class="inline-list"><li>English</li>
+              <li>Malayalam</li>
+              <li>Hindi</li></ul></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       RECOGNITION
+       =================================================================== -->
+  <section class="block" id="recognition" aria-labelledby="t-recognition">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-recognition">Recognition</h2>
+
+      <div class="block-body">
+        <h3 class="sub">Achievements and awards</h3>
+        <ul class="list">
+          <li class="award">
+            <span class="award-fig">Rank 178</span>
+            <div>
+              <h4><abbr title="Council of Scientific and Industrial Research, National Eligibility Test">CSIR NET</abbr> Junior Research Fellowship (JRF)</h4>
+            </div>
+          </li>
+          <li class="award">
+            <span class="award-fig">2020, 2021</span>
+            <div>
+              <h4>JAM qualified</h4>
+            </div>
+          </li>
+          <li class="award">
+            <span class="award-fig">2014</span>
+            <div>
+              <h4>Science Genius Award</h4>
+              <p>Awarded by Mar Ivanios College and the Directorate of Public Instruction, Kerala.</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3 class="sub">Oral presentations</h3>
+        <ul class="list">
+          <li class="row">
+            <span class="row-when">Sep 2023</span>
+            <div>
+              <h4>Galactic Clouds in Motion Exploring Cosmic Hierarchies</h4>
+              <p class="row-org">Aastro Kerala Monthly Lecture Series, Kerala State Science &amp; Technology Museum</p>
+            </div>
+          </li>
+          <li class="row">
+            <span class="row-when">Jun 2023</span>
+            <div>
+              <h4>Understanding the Gas Kinematics and Hierarchical Structure of The Galactic Cloud <span class="nowrap">G316.80-0.05</span></h4>
+              <p class="row-org">Paper presented at Heights 2023, KU Researchers' Fest, University of Kerala</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       COURSES AND WORKSHOPS
+       =================================================================== -->
+  <section class="block" id="learning" aria-labelledby="t-learning">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-learning">Courses and workshops</h2>
+
+      <div class="block-body">
+        <div class="seg" role="group" aria-label="Filter by type">
+          <button type="button" data-filter="all" aria-pressed="true">All <span class="count"></span></button>
+          <button type="button" data-filter="workshop" aria-pressed="false">Workshops <span class="count"></span></button>
+          <button type="button" data-filter="school" aria-pressed="false">Schools <span class="count"></span></button>
+          <button type="button" data-filter="course" aria-pressed="false">Courses <span class="count"></span></button>
         </div>
-    </section>
+        <p class="sr-only" id="learn-status" role="status" aria-live="polite"></p>
 
-    <!-- Achievements -->
-    <section>
-        <h2>Achievements & Awards</h2>
-        <div class="card">
-            <ul>
-                <li><strong>CSIR NET-Junior Research Fellowship (JRF):</strong> Rank 178</li>
-                <li><strong>JAM:</strong> Qualified in 2020 and 2021</li>
-                <li><strong>Science Genius 2014 Award:</strong> Awarded by Mar Ivanios College & Directorate of Public Instruction, Kerala</li>
-            </ul>
+        <ul class="learn-list" id="learn-list">
+          <li class="learn-item" data-type="workshop">
+            <span class="learn-when">Jun 2025</span>
+            <div>
+              <h3>National Workshop on Data Analysis of XSPECT onboard XPoSat</h3>
+              <p class="learn-org">URSC, Bangalore</p>
+            </div>
+            <span class="learn-type">Workshop</span>
+          </li>
+          <li class="learn-item" data-type="workshop">
+            <span class="learn-when">Apr 2025</span>
+            <div>
+              <h3>XMM-Newton Data Analysis Workshop</h3>
+            </div>
+            <span class="learn-type">Workshop</span>
+          </li>
+          <li class="learn-item" data-type="school">
+            <span class="learn-when">Dec 2024</span>
+            <div>
+              <h3>Manipal Astrostatistics School</h3>
+            </div>
+            <span class="learn-type">School</span>
+          </li>
+          <li class="learn-item" data-type="school">
+            <span class="learn-when">2023</span>
+            <div>
+              <h3>Kodaikanal Winter School on Solar Physics</h3>
+              <p class="learn-org">Kodaikanal Solar Observatory, <abbr title="Indian Institute of Astrophysics">IIA</abbr></p>
+            </div>
+            <span class="learn-type">School</span>
+          </li>
+          <li class="learn-item" data-type="course">
+            <span class="learn-when">Oct&ndash;Nov 2022</span>
+            <div>
+              <h3>Short-term course on Exoplanets and the Search for Habitable Worlds</h3>
+              <p class="learn-org">IARS Bengaluru, IIST &amp; KSSTM</p>
+            </div>
+            <span class="learn-type">Course</span>
+          </li>
+          <li class="learn-item" data-type="workshop">
+            <span class="learn-when">Jul 2022</span>
+            <div>
+              <h3>National Workshop on Atmospheric Physics, Space Science, and Astrophysics</h3>
+              <p class="learn-org">University of Kerala &amp; <abbr title="Space Physics Laboratory">SPL</abbr>, <abbr title="Vikram Sarabhai Space Centre">VSSC</abbr></p>
+            </div>
+            <span class="learn-type">Workshop</span>
+          </li>
+          <li class="learn-item" data-type="school">
+            <span class="learn-when">2021, 2022</span>
+            <div>
+              <h3>IIA Summer School (Online)</h3>
+              <p class="learn-org">Indian Institute of Astrophysics</p>
+            </div>
+            <span class="learn-type">School</span>
+          </li>
+          <li class="learn-item" data-type="course">
+            <span class="learn-when">Online</span>
+            <div>
+              <h3>From the Big Bang to Dark Energy</h3>
+              <p class="learn-org">Coursera, University of Tokyo</p>
+            </div>
+            <span class="learn-type">Course</span>
+          </li>
+          <li class="learn-item" data-type="course">
+            <span class="learn-when">Online</span>
+            <div>
+              <h3>Data Driven Astronomy</h3>
+              <p class="learn-org">Coursera, University of Sydney</p>
+            </div>
+            <span class="learn-type">Course</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       OUTREACH
+       =================================================================== -->
+  <section class="block" id="outreach" aria-labelledby="t-outreach">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-outreach">Public outreach</h2>
+
+      <div class="block-body">
+        <div class="org-grid">
+          <article class="org">
+            <h3>Aastro Kerala</h3>
+            <p class="org-role">Active member</p>
+            <p>Amateur astronomers' organisation.</p>
+          </article>
+          <article class="org">
+            <h3>Shasthra Snehi</h3>
+            <p class="org-role">Active member</p>
+            <p>Non-profit organization for scientific empowerment.</p>
+          </article>
+          <article class="org">
+            <h3>MAHAS</h3>
+            <p class="org-role">Executive member</p>
+            <p>Charitable organization.</p>
+          </article>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Presentations -->
-    <section>
-        <h2>Oral Presentations</h2>
-        <div class="card">
-            <ul>
-                <li><strong>Galactic Clouds in Motion Exploring Cosmic Hierarchies</strong> – Aastro Kerala Monthly Lecture Series, Kerala State Science & Technology Museum (Sept 2023).</li>
-                <li><strong>Understanding the Gas Kinematics and Hierarchical Structure of The Galactic Cloud G316.80-0.05</strong> – Paper presented at "Heights 2023, KU Researchers' Fest", University of Kerala (June 2023).</li>
-            </ul>
+  <!-- ===================================================================
+       CONTACT
+       =================================================================== -->
+  <section class="block" id="contact" aria-labelledby="t-contact">
+    <div class="container block-grid">
+      <h2 class="block-title" id="t-contact">Contact</h2>
+
+      <div class="block-body">
+        <p class="contact-lead">Write to me about research, collaborations or the night sky.</p>
+
+        <a class="contact-email" href="mailto:ssvs1998@gmail.com">ssvs1998@gmail.com</a>
+        <div class="contact-tools">
+          <button class="btn" type="button" id="copy-email" data-copy="ssvs1998@gmail.com">Copy email address</button>
         </div>
-    </section>
 
-    <!-- Courses & Workshops -->
-    <section>
-        <h2>Courses and Workshops</h2>
-        <div class="card">
-            <ul>
-                <li>National Workshop on Data Analysis of XSPECT onboard XPoSat, URSC Bangalore (June 2025)</li>
-                <li>XMM-Newton Data Analysis Workshop (April 2025)</li>
-                <li>Manipal Astrostatistics School (Dec 2024)</li>
-                <li>Kodaikanal Winter School on Solar Physics, Kodaikanal Solar Observatory, IIA (2023)</li>
-                <li>Short-term course on Exoplanets and the Search for Habitable Worlds, IARS Bengaluru, IIST & KSSTM (Oct–Nov 2022)</li>
-                <li>National Workshop on Atmospheric Physics, Space Science, and Astrophysics, Univ. of Kerala & SPL, VSSC (July 2022)</li>
-                <li>IIA Summer School (Online), Indian Institute of Astrophysics (2021 & 2022)</li>
-                <li><strong>Coursera:</strong> "From the Big Bang to Dark Energy" (Univ. of Tokyo) & "Data Driven Astronomy" (Univ. of Sydney)</li>
-            </ul>
-        </div>
-    </section>
+        <dl class="contact-list">
+          <!-- EDIT: remove this row if you would rather not show your phone number publicly -->
+          <div class="contact-row">
+            <dt>Phone</dt>
+            <dd><a href="tel:+919645460071">+91 9645460071</a></dd>
+          </div>
+          <!-- EDIT: replace the "#" below with your LinkedIn URL, for example https://www.linkedin.com/in/your-name
+               While it is "#", this row stays hidden. -->
+          <div class="contact-row" data-optional>
+            <dt>LinkedIn</dt>
+            <dd><a href="#" data-placeholder target="_blank" rel="noopener noreferrer">LinkedIn profile</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-    <!-- Outreach -->
-    <section>
-        <h2>Public Outreach Activities</h2>
-        <div class="card">
-            <ul>
-                <li>Active member of <strong>Aastro Kerala</strong> (Amateur Astronomers Organisation)</li>
-                <li>Active member of <strong>Shasthra Snehi</strong> (Non-profit organization for scientific empowerment)</li>
-                <li>Executive Member of <strong>MAHAS</strong> (Charitable organization)</li>
-            </ul>
-        </div>
-    </section>
+</main>
 
-    <!-- Footer -->
-    <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.9rem;">
-        <p>&copy; 2026 Swasthik Visakh S. All rights reserved.</p>
-    </footer>
-</div>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>&copy; <span id="year">2026</span> Swasthik Visakh S. All rights reserved.</span>
+    <a class="footer-top" href="#top">Back to top</a>
+  </div>
+</footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  const doc = document;
+  const root = doc.documentElement;
+  const $ = (sel, ctx = doc) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = doc) => Array.from(ctx.querySelectorAll(sel));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const listen = (mq, fn) => (mq.addEventListener ? mq.addEventListener('change', fn) : mq.addListener(fn));
+
+  /* ------------------------------------------------------------------
+     Theme (Day / Night). Saved choice wins, otherwise the system setting.
+     ------------------------------------------------------------------ */
+  const themeBtn = $('#theme-toggle');
+  const metaTheme = $('meta[name="theme-color"]');
+  const themeColors = { light: '#F4F6FA', dark: '#080C18' };
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    if (metaTheme) metaTheme.setAttribute('content', themeColors[theme]);
+    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to day theme' : 'Switch to night theme');
+  }
+  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.classList.add('theme-fade');
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable: theme still changes for this visit */ }
+    setTimeout(() => root.classList.remove('theme-fade'), 450);
+  });
+
+  listen(window.matchMedia('(prefers-color-scheme: dark)'), (e) => {
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (err) { /* ignore */ }
+    if (!saved) applyTheme(e.matches ? 'dark' : 'light');
+  });
+
+  /* ------------------------------------------------------------------
+     Navigation: reading progress, current section, mobile menu
+     ------------------------------------------------------------------ */
+  const header = $('#topbar');
+  const bar = $('#progress-bar');
+  const navLinks = $$('.site-nav a');
+  const navSections = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
+  let ticking = false;
+
+  function updateScrollState() {
+    ticking = false;
+    const y = window.scrollY || root.scrollTop;
+    const max = root.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+
+    let current = null;
+    const line = window.innerHeight * 0.35;
+    navSections.forEach((s) => { if (s.getBoundingClientRect().top <= line) current = s; });
+    if (max > 0 && y >= max - 4) current = navSections[navSections.length - 1];
+
+    navLinks.forEach((a) => {
+      const on = current && a.getAttribute('href') === '#' + current.id;
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  function requestScrollUpdate() {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateScrollState); }
+  }
+  window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+  window.addEventListener('resize', requestScrollUpdate);
+  updateScrollState();
+
+  const menuBtn = $('#menu-toggle');
+  function setMenu(open) {
+    header.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuBtn.addEventListener('click', () => setMenu(!header.classList.contains('menu-open')));
+  navLinks.forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  doc.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  doc.addEventListener('click', (e) => {
+    if (header.classList.contains('menu-open') && !header.contains(e.target)) setMenu(false);
+  });
+  listen(window.matchMedia('(min-width: 961px)'), (e) => { if (e.matches) setMenu(false); });
+
+  /* ------------------------------------------------------------------
+     Courses and workshops: filter by type
+     ------------------------------------------------------------------ */
+  (function initFilter() {
+    const buttons = $$('.seg button');
+    const items = $$('.learn-item');
+    const status = $('#learn-status');
+    if (!buttons.length || !items.length) return;
+
+    buttons.forEach((btn) => {
+      const f = btn.dataset.filter;
+      const n = f === 'all' ? items.length : items.filter((it) => it.dataset.type === f).length;
+      $('.count', btn).textContent = n;
+    });
+
+    buttons.forEach((btn) => btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      let shown = 0;
+      items.forEach((it) => {
+        const show = f === 'all' || it.dataset.type === f;
+        it.hidden = !show;
+        it.classList.remove('pop');
+        if (show) {
+          shown += 1;
+          if (!reduceMotion.matches) { void it.offsetWidth; it.classList.add('pop'); }
+        }
+      });
+      status.textContent = 'Showing ' + shown + (shown === 1 ? ' item' : ' items');
+    }));
+  })();
+
+  /* ------------------------------------------------------------------
+     Contact: copy email, toast, save as PDF, optional links, year
+     ------------------------------------------------------------------ */
+  const toast = $('#toast');
+  let toastTimer = 0;
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+
+  const copyBtn = $('#copy-email');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const text = copyBtn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Email address copied');
+      } catch (err) {
+        const ta = doc.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        doc.body.appendChild(ta);
+        ta.select();
+        try {
+          doc.execCommand('copy');
+          showToast('Email address copied');
+        } catch (e2) {
+          showToast('Could not copy. Select the address and copy it manually.');
+        }
+        ta.remove();
+      }
+    });
+  }
+
+  $$('[data-print]').forEach((b) => b.addEventListener('click', () => window.print()));
+
+  $$('a[data-placeholder]').forEach((a) => {
+    const href = (a.getAttribute('href') || '').trim();
+    if (href === '' || href === '#') {
+      const row = a.closest('[data-optional]');
+      if (row) row.hidden = true;
+    }
+  });
+
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ------------------------------------------------------------------
+     Hero figure: a simulated gas cloud coloured by line-of-sight velocity.
+     Not real data. A rotating disc with clumps nested inside clumps.
+     Moving gas toward us is blue, away from us is red.
+     ------------------------------------------------------------------ */
+  (function initVelocityMap() {
+    const frame = $('#plate-frame');
+    const canvas = $('#vmap');
+    const readout = $('#readout');
+    const slider = $('#tilt');
+    const tiltOut = $('#tilt-out');
+    if (!frame || !canvas || !readout || !slider || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const W = canvas.width, H = canvas.height, N = W * H;
+    const S = 1.15;                                   // half-width of the map, in cloud radii
+    const idleText = readout.textContent;
+    const img = ctx.createImageData(W, H);
+    const px = img.data;
+    const clumpD = new Float32Array(N);               // summed clump density
+    const clumpV = new Float32Array(N);               // density-weighted clump velocity offset
+    const vel = new Float32Array(N);                  // velocity shown in each pixel
+    const lum = new Float32Array(N);                  // brightness shown in each pixel
+    const grain = new Float32Array(N);                // fixed noise so the map looks like data
+
+    // Seeded random numbers: the same cloud on every visit (seed nods to G316)
+    let seedVal = 316;
+    const rand = () => {
+      let t = seedVal += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+    const gauss = () => {
+      let u = 0;
+      while (u === 0) u = rand();
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(6.283185307 * rand());
+    };
+    for (let i = 0; i < N; i++) grain[i] = rand();
+
+    // Hierarchy: parent clumps, each holding a handful of smaller child clumps
+    const parents = [];
+    for (let p = 0; p < 6; p++) {
+      const parent = {
+        R: 0.22 + rand() * 0.62, phi: rand() * 6.283185307,
+        s: 0.10 + rand() * 0.04, a: 0.55, dv: gauss() * 0.10, kids: []
+      };
+      const kidCount = 3 + Math.floor(rand() * 3);
+      for (let k = 0; k < kidCount; k++) {
+        parent.kids.push({
+          ox: gauss() * 0.075, oy: gauss() * 0.075,
+          s: 0.030 + rand() * 0.018, a: 0.8 + rand() * 0.5, dv: parent.dv + gauss() * 0.07
+        });
+      }
+      parents.push(parent);
+    }
+
+    let tilt = 58, tiltTarget = 58, cosI = 1, sinI = 0, simTime = 4;
+
+    // Add one Gaussian clump to the density and velocity buffers
+    function splat(cx, cy, s, a, dv) {
+      const ix = (cx / S * 0.5 + 0.5) * W;
+      const iy = (0.5 - cy * cosI / S * 0.5) * H;
+      const sx = s / S * 0.5 * W;
+      const sy = Math.max(s * cosI / S * 0.5 * H, 0.9);
+      const x0 = Math.max(0, Math.floor(ix - 3 * sx)), x1 = Math.min(W - 1, Math.ceil(ix + 3 * sx));
+      const y0 = Math.max(0, Math.floor(iy - 3 * sy)), y1 = Math.min(H - 1, Math.ceil(iy + 3 * sy));
+      for (let y = y0; y <= y1; y++) {
+        const dy = (y + 0.5 - iy) / sy;
+        for (let x = x0; x <= x1; x++) {
+          const dx = (x + 0.5 - ix) / sx;
+          const g = a * Math.exp(-0.5 * (dx * dx + dy * dy));
+          const i = y * W + x;
+          clumpD[i] += g;
+          clumpV[i] += g * dv;
+        }
+      }
+    }
+
+    function render(t) {
+      const incl = tilt * Math.PI / 180;
+      sinI = Math.sin(incl);
+      cosI = Math.max(Math.cos(incl), 0.17);
+      clumpD.fill(0);
+      clumpV.fill(0);
+
+      // Differential rotation: inner clumps orbit faster; children travel with their parent
+      for (let p = 0; p < parents.length; p++) {
+        const par = parents[p];
+        const rate = 0.22 / Math.sqrt(par.R * par.R + 0.0324);
+        const ang = rate * t;
+        const th = par.phi + ang, c = Math.cos(ang), s = Math.sin(ang);
+        const cx = par.R * Math.cos(th), cy = par.R * Math.sin(th);
+        splat(cx, cy, par.s, par.a, par.dv);
+        for (let k = 0; k < par.kids.length; k++) {
+          const kid = par.kids[k];
+          splat(cx + kid.ox * c - kid.oy * s, cy + kid.ox * s + kid.oy * c, kid.s, kid.a, kid.dv);
+        }
+      }
+
+      for (let y = 0; y < H; y++) {
+        const Y = (0.5 - (y + 0.5) / H) * 2 * S;
+        const yd = Y / cosI;                            // undo the tilt to get disc-plane y
+        const yd2 = yd * yd;
+        for (let x = 0; x < W; x++) {
+          const i = y * W + x;
+          const X = ((x + 0.5) / W - 0.5) * 2 * S;
+          const R2 = X * X + yd2;
+          const R = Math.sqrt(R2) + 1e-6;
+
+          const base = 0.5 * Math.exp(-R2 / 0.36);      // smooth disc
+          const vDisc = (R / Math.sqrt(R2 + 0.0324)) * sinI * (X / R);   // flat rotation curve
+          const D = base + clumpD[i];
+          const v = vDisc + (D > 1e-4 ? clumpV[i] / D : 0);
+          vel[i] = v;
+
+          let c = v / 0.85;
+          c = c < -1 ? -1 : (c > 1 ? 1 : c);
+          let tt = (1 - Math.exp(-2.2 * D)) * (0.88 + 0.12 * grain[i]);
+          lum[i] = tt;
+
+          let cr, cg, cb;
+          if (c < 0) {                                  // toward us: blue
+            const k = -c;
+            cr = 236 + (46 - 236) * k; cg = 238 + (104 - 238) * k; cb = 248 + (255 - 248) * k;
+          } else {                                      // away from us: red
+            cr = 236 + (255 - 236) * c; cg = 238 + (78 - 238) * c; cb = 248 + (56 - 248) * c;
+          }
+          const o = i * 4;
+          px[o]     = 5 + (cr - 5) * tt;
+          px[o + 1] = 8 + (cg - 8) * tt;
+          px[o + 2] = 18 + (cb - 18) * tt;
+          px[o + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+    }
+
+    // Readout under the pointer
+    const pointer = { x: 0, y: 0, active: false };
+    const fmt = (n) => (n < 0 ? '\u2212' : '+') + Math.abs(n).toFixed(2);
+    function updateReadout() {
+      if (!pointer.active) return;
+      const ix = Math.min(W - 1, Math.max(0, Math.floor(pointer.x * W)));
+      const iy = Math.min(H - 1, Math.max(0, Math.floor(pointer.y * H)));
+      const i = iy * W + ix;
+      const X = (pointer.x * 2 - 1) * S;
+      const Y = (1 - pointer.y * 2) * S;
+      const v = lum[i] < 0.05 ? '\u2014' : fmt(vel[i]);
+      readout.textContent = 'x ' + fmt(X) + '  y ' + fmt(Y) + '  v ' + v;
+    }
+    frame.addEventListener('pointermove', (e) => {
+      const r = frame.getBoundingClientRect();
+      pointer.x = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      pointer.y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      pointer.active = true;
+      frame.classList.add('is-active');
+      frame.style.setProperty('--cx', (pointer.x * 100) + '%');
+      frame.style.setProperty('--cy', (pointer.y * 100) + '%');
+      updateReadout();
+    });
+    function clearPointer() {
+      pointer.active = false;
+      frame.classList.remove('is-active');
+      readout.textContent = idleText;
+    }
+    frame.addEventListener('pointerleave', clearPointer);
+    frame.addEventListener('pointercancel', clearPointer);
+
+    // Animation loop: runs only while the figure is on screen and motion is allowed
+    let animated = !reduceMotion.matches, visible = true, raf = 0, last = 0;
+    function loop(now) {
+      raf = requestAnimationFrame(loop);
+      if (now - last < 32) return;                      // about 30 frames per second
+      const dt = Math.min((now - last) / 1000, 0.1);
+      last = now;
+      simTime += dt;
+      tilt += (tiltTarget - tilt) * 0.18;
+      render(simTime);
+      updateReadout();
+    }
+    function start() {
+      if (!raf && animated && visible && !doc.hidden) { last = performance.now(); raf = requestAnimationFrame(loop); }
+    }
+    function stop() {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    }
+
+    slider.addEventListener('input', () => {
+      tiltTarget = Number(slider.value);
+      tiltOut.textContent = slider.value + '\u00B0';
+      if (!animated) { tilt = tiltTarget; render(simTime); updateReadout(); }
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        if (visible) start(); else stop();
+      }).observe(frame);
+    }
+    doc.addEventListener('visibilitychange', () => { if (doc.hidden) stop(); else start(); });
+    listen(reduceMotion, (e) => {
+      animated = !e.matches;
+      if (animated) start(); else { stop(); tilt = tiltTarget; render(simTime); }
+    });
+
+    render(simTime);
+    start();
+  })();
+})();
+</script>
 </body>
 </html>
